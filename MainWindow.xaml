@@ -20,7 +20,7 @@
                 <lvc:Axis Title="電流[mA]"/>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart> -->
-        <local:MyCanvas Grid.Row="0">
+        <local:MyCanvas x:Name="GraphCanvas" Grid.Row="0">
             
         </local:MyCanvas>
         <Grid Grid.Row="1">
@@ -29,10 +29,11 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Vertical">
-                <TextBlock Text="{Binding AccumulativeCurrent}"/>
+                <TextBlock x:Name="StatisticsTextBlock" Text="{Binding CurrentStatistics}"/>
             </StackPanel>
             <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
                 <ToggleButton x:Name="ConnectButton" Content="接続" Margin="8,8" Width="70" Checked="ConnectButton_Checked" Unchecked="ConnectButton_Unchecked"/>
+                <Button x:Name="ResetButton" Content="リセット" Margin="8,8" Width="70" Click="ResetButton_Click"/>
             </StackPanel>
         </Grid>
     </Grid>

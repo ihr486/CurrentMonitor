@@ -37,7 +37,7 @@ UInt32 WinUSBDevice::ReadEndpoint(Byte endpoint, array<Byte>^ buffer, UInt32 len
 
 UInt32 WinUSBDevice::ControlTransfer(Byte requestType, Byte request, UInt16 value, UInt16 index, UInt16 length, array<Byte>^ buffer, UInt32 transferlength)
 {
-	pin_ptr<Byte> ppszBuffer = &(buffer[0]);
+	pin_ptr<Byte> ppszBuffer = buffer ? &(buffer[0]) : nullptr;
 	ULONG dwLengthTransferred;
 	WINUSB_SETUP_PACKET setup_data;
 	setup_data.RequestType = requestType;
