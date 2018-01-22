@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CurrentMonitor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="USB電流消費モニター" Height="350" Width="525" Closed="Window_Closed">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
         
+        <!-- <lvc:CartesianChart Grid.Row="0" Series="{Binding SeriesCollection}" LegendLocation="None" DisableAnimations="True" Hoverable="False">
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="時間[ms]" Labels="{Binding XLabels}" MinRange="0" MaxRange="5000"/>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="電流[mA]"/>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart> -->
+        <local:MyCanvas Grid.Row="0">
+            
+        </local:MyCanvas>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Vertical">
+                <TextBlock Text="{Binding AccumulativeCurrent}"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                <ToggleButton x:Name="ConnectButton" Content="接続" Margin="8,8" Width="70" Checked="ConnectButton_Checked" Unchecked="ConnectButton_Unchecked"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
